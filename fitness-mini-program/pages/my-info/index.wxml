@@ -1,0 +1,54 @@
+<view class="container">
+  <!-- 头像区域 - 居中显示 -->
+  <view class="avatar-section">
+    <view class="avatar-wrapper" bindtap="chooseAvatar">
+      <image class="avatar" src="{{avatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200'}}" mode="aspectFill"></image>
+      <view class="avatar-edit">点击更换</view>
+    </view>
+  </view>
+
+  <!-- 手机号（不可修改） -->
+  <view class="form-item">
+    <text class="label">手机号</text>
+    <input class="input" type="text" disabled value="{{phone}}" placeholder="手机号不可修改" />
+  </view>
+
+  <!-- 姓名 -->
+  <view class="form-item">
+    <text class="label">姓名</text>
+    <input class="input" type="text" bindinput="onNameInput" value="{{name}}" placeholder="请输入姓名" />
+  </view>
+
+  <!-- 生日 -->
+  <view class="form-item">
+    <text class="label">生日</text>
+    <picker mode="date" value="{{birthday}}" bindchange="onBirthdayChange">
+      <view class="picker">{{birthday || '请选择生日'}}</view>
+    </picker>
+  </view>
+
+  <!-- 性别 -->
+  <view class="form-item">
+    <text class="label">性别</text>
+    <radio-group class="radio-group" bindchange="onGenderChange">
+      <label class="radio">
+        <radio value="1" checked="{{gender == 1}}" /> 男
+      </label>
+      <label class="radio">
+        <radio value="2" checked="{{gender == 2}}" /> 女
+      </label>
+      <label class="radio">
+        <radio value="0" checked="{{gender == 0}}" /> 保密
+      </label>
+    </radio-group>
+  </view>
+
+  <!-- 详细地址 -->
+  <view class="form-item">
+    <text class="label">详细地址</text>
+    <input class="input" type="text" bindinput="onAddressInput" value="{{address}}" placeholder="请输入地址" />
+  </view>
+
+  <!-- 保存按钮 -->
+  <button class="save-btn" type="primary" bindtap="saveProfile">保存</button>
+</view>

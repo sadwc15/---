@@ -1,0 +1,73 @@
+<view class="container">
+  <!-- 1. 顶部沉浸式 Banner 区 -->
+  <view class="header-banner">
+    <image class="banner-bg" src="https://img.zcool.cn/community/01a3865d527146a8012187f49093b4.jpg@1280w_1l_2o_100sh.jpg" mode="aspectFill"></image>
+    <view class="banner-mask"></view>
+    <view class="banner-content">
+      <view class="brand-title">SUPER MONKEY</view>
+      <view class="brand-slogan">按次付费 · 不办年卡</view>
+      <!-- 模拟搜索框 -->
+      <view class="search-fake" bindtap="goSearch">
+  <icon type="search" size="14" color="#fff"></icon>
+  <text>搜索课程、教练...</text>
+</view>
+    </view>
+  </view>
+
+  <!-- 2. 悬浮金刚区 (核心功能) -->
+  <!-- 必须确保 class="menu-card" 是 flex 布局 -->
+  <view class="menu-card-wrapper">
+    <view class="menu-card">
+      <view class="menu-item" bindtap="handleGridTap" data-type="private">
+        <image src="/assets/images/profile.png" class="menu-icon"></image>
+        <text>私教</text>
+      </view>
+      <view class="menu-item" bindtap="handleGridTap" data-type="group">
+        <image src="/assets/images/course.png" class="menu-icon"></image>
+        <text>团课</text>
+      </view>
+      <view class="menu-item" bindtap="handleGridTap" data-type="project">
+        <image src="/assets/images/home.png" class="menu-icon"></image>
+        <text>训练营</text>
+      </view>
+      <view class="menu-item" bindtap="handleGridTap" data-type="calendar">
+        <image src="/assets/images/home.png" class="menu-icon"></image>
+        <text>课表</text>
+      </view>
+      <view class="menu-item" bindtap="handleGridTap" data-type="shop">
+        <image src="/assets/images/course.png" class="menu-icon"></image>
+        <text>周边</text>
+      </view>
+      
+      <!-- ★★★ 这里修改了文字：从“我的”变成“关于我们” ★★★ -->
+      <view class="menu-item" bindtap="handleGridTap" data-type="about">
+        <image src="/assets/images/profile.png" class="menu-icon"></image>
+        <text>关于我们</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 3. 热门活动/资讯 (大卡片流) -->
+  <view class="section-wrapper">
+    <view class="section-header">
+      <text class="title-big">热门活动</text>
+      <text class="title-more">查看全部 ></text>
+    </view>
+
+    <view class="activity-list">
+      <view class="act-card" wx:for="{{newsList}}" wx:key="id" bindtap="goNewsDetail" data-id="{{item.id}}">
+        <image class="act-img" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="act-info">
+          <view class="act-title">{{item.title}}</view>
+          <view class="act-tags">
+            <text class="tag">🔥 人气爆棚</text>
+            <text class="tag">限时</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部垫高，防止被 TabBar 遮挡 -->
+  <view style="height: 100rpx;"></view>
+</view>

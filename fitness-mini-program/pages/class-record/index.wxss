@@ -1,0 +1,51 @@
+.container {
+  padding: 40rpx;
+  background: #fff;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60rpx;
+  padding-bottom: 40rpx;
+  border-bottom: 1rpx dashed #ddd;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 10rpx;
+}
+
+.mood {
+  font-size: 60rpx;
+  font-weight: bold;
+  color: #1AAD19;
+  margin-bottom: 10rpx;
+}
+
+.time {
+  font-size: 24rpx;
+  color: #ccc;
+}
+
+.section {
+  margin-bottom: 50rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  border-left: 8rpx solid #1AAD19;
+  padding-left: 20rpx;
+}
+
+.content {
+  font-size: 30rpx;
+  color: #444;
+  line-height: 1.8;
+  background: #f9f9f9;
+  padding: 30rpx;
+  border-radius: 12rpx;
+}

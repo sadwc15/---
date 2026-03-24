@@ -1,0 +1,16 @@
+<view class="container" wx:if="{{product}}">
+  <image class="hero-img" src="{{product.image}}" mode="aspectFill"></image>
+  
+  <view class="info-box">
+    <view class="price">¥ {{product.price}}</view>
+    <view class="name">{{product.name}}</view>
+    <view class="stock">库存: {{product.stock}} 件</view>
+    <view class="divider"></view>
+    <view class="desc-title">商品详情</view>
+    <view class="desc">{{product.description}}</view>
+  </view>
+
+  <view class="footer">
+    <button class="btn-buy" bindtap="handleBuy">立即购买</button>
+  </view>
+</view>

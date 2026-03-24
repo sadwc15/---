@@ -1,0 +1,48 @@
+<view class="container" wx:if="{{course}}">
+  <!-- 顶部大图 -->
+  <image class="banner" src="{{course.image || 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500'}}" mode="aspectFill"></image>
+
+  <view class="info-card">
+    <view class="title">{{course.title}}</view>
+    
+    <view class="row">
+      <view class="label">教练</view>
+      <view class="val">{{course.coach ? course.coach.name : '门店教练'}}</view>
+    </view>
+    <view class="row">
+      <view class="label">时间</view>
+      <view class="val">{{course.startTime}}</view>
+    </view>
+    <view class="desc">
+      <view class="desc-title">课程介绍</view>
+      <view class="desc-content">{{course.description || '暂无介绍'}}</view>
+    </view>
+  </view>
+
+  <!-- 底部购买栏 -->
+  <view class="bottom-bar">
+    <view class="price-box">
+      
+      <!-- 如果没用券 -->
+      <block wx:if="{{!usingCoupon}}">
+        <text class="unit">¥</text>
+        <text class="num">{{course.price}}</text>
+      </block>
+
+      <!-- 如果用了券 (显示非常详细) -->
+      <block wx:else>
+        <view class="tag">券后</view>
+        <text class="unit red">¥</text>
+        <text class="num red">{{finalPrice}}</text>
+        
+        <view class="discount-info">
+          <text class="old">原价¥{{course.price}}</text>
+          <text class="save">省¥{{couponAmount}}</text>
+        </view>
+      </block>
+
+    </view>
+
+    <button class="btn-book" bindtap="handleBook">立即预约</button>
+  </view>
+</view>

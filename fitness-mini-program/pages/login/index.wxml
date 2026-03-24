@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="title">{{isRegister ? '新用户注册' : '欢迎登录'}}</view>
+
+  <!-- 身份切换 (仅登录时显示) -->
+  <view class="role-switch" wx:if="{{!isRegister}}">
+    <view class="role-btn {{role==='MEMBER'?'active':''}}" bindtap="switchRole" data-role="MEMBER">我是会员</view>
+    <view class="role-btn {{role==='COACH'?'active':''}}" bindtap="switchRole" data-role="COACH">我是教练</view>
+  </view>
+
+  <!-- 表单 -->
+  <view class="form-group">
+    <input class="input" placeholder="请输入手机号" bindinput="onInput" data-field="phone" />
+    <input class="input" placeholder="请输入密码" password type="text" bindinput="onInput" data-field="password" />
+    <input wx:if="{{isRegister}}" class="input" placeholder="请输入昵称" bindinput="onInput" data-field="name" />
+  </view>
+
+  <button class="btn-primary" bindtap="handleSubmit">{{isRegister ? '立即注册' : '登录'}}</button>
+  
+  <view class="toggle-text" bindtap="toggleMode">
+    {{isRegister ? '已有账号？去登录' : '没有账号？去注册'}}
+  </view>
+  
+  <view class="guest-text" bindtap="goHome">
+    暂不登录，游客看看 >
+  </view>
+</view>

@@ -1,0 +1,27 @@
+<view class="container">
+  
+  <view class="coupon-item {{item.status !== 0 ? 'grey' : ''}}" wx:for="{{coupons}}" wx:key="id">
+    
+    <!-- 左侧金额 -->
+    <view class="left">
+      <view class="amount">¥<text>{{item.amount}}</text></view>
+      <view class="cond">{{item.cond}}</view>
+    </view>
+
+    <!-- 右侧信息 -->
+    <view class="right">
+      <view class="title">{{item.title}}</view>
+      <view class="date">
+        {{item.status === 1 ? '已使用' : (item.status === 2 ? '已过期' : '有效期至 ' + item.date)}}
+      </view>
+
+      <!-- 按钮逻辑：只有状态为0（未使用）才显示去使用 -->
+      <button wx:if="{{item.status === 0}}" class="btn" bindtap="goUse" data-id="{{item.id}}">去使用</button>
+      
+      <button wx:elif="{{item.status === 1}}" class="btn used">已使用</button>
+      <button wx:else class="btn used">不可用</button>
+    </view>
+
+  </view>
+
+</view>

@@ -1,0 +1,76 @@
+<view class="container">
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 暂无课程 -->
+  <view class="empty" wx:elif="{{!sessionInfo && !error}}">
+    <text>暂无进行中的课程</text>
+  </view>
+
+  <!-- 错误提示 -->
+  <view class="error" wx:elif="{{error}}">
+    <text>{{error}}</text>
+  </view>
+
+  <!-- 课程卡片 -->
+  <view class="course-card" wx:elif="{{sessionInfo}}">
+    <!-- 课程图片 -->
+    <view class="card-header">
+      <image class="course-image" src="{{sessionInfo.courseImage || '/images/default-course.png'}}" mode="aspectFill"></image>
+      <!-- 状态标签部分 -->
+      <view class="status-tag status-{{sessionInfo.sessionStatus}}">
+        <text wx:if="{{sessionInfo.sessionStatus == 0}}">待开始</text>
+        <text wx:elif="{{sessionInfo.sessionStatus == 1}}">上课中</text>
+        <text wx:elif="{{sessionInfo.sessionStatus == 2}}">已完成</text>
+        <text wx:elif="{{sessionInfo.sessionStatus == 3}}">已取消</text>
+      </view>
+    </view>
+
+    <!-- 课程信息 -->
+    <view class="card-body">
+      <text class="course-title">{{sessionInfo.courseTitle}}</text>
+      <view class="info-row">
+        <text class="label">上课时间：</text>
+        <text class="value">{{sessionInfo.bookingTime}}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">教练：</text>
+        <text class="value">{{sessionInfo.coachName || '店内教练'}}</text>
+      </view>
+      
+      <!-- 倒计时（仅上课中状态显示） -->
+      <view class="countdown-section" wx:if="{{sessionInfo.sessionStatus == 1}}">
+        <text class="countdown-label">已上课时长</text>
+        <text class="countdown-time">{{formattedTime}}</text>
+      </view>
+    </view>
+
+    <!-- 底部按钮 -->
+    <view class="card-footer">
+      <!-- 待开始：绿色开始按钮 -->
+      <button class="btn btn-start" 
+              wx:if="{{sessionInfo.sessionStatus == 0}}"
+              bindtap="handleStart"
+              loading="{{btnLoading}}"
+              disabled="{{btnLoading}}">
+        开始上课
+      </button>
+
+      <!-- 上课中：红色下课按钮 -->
+      <button class="btn btn-finish" 
+              wx:elif="{{sessionInfo.sessionStatus == 1}}"
+              bindtap="handleFinish"
+              loading="{{btnLoading}}"
+              disabled="{{btnLoading}}">
+        下课
+      </button>
+
+      <!-- 已完成：灰色标签 -->
+      <view class="finished-tag" wx:elif="{{sessionInfo.sessionStatus == 2}}">
+        <text>✓ 已完成</text>
+      </view>
+    </view>
+  </view>
+</view>

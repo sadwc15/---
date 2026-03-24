@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="title">账户充值</view>
+  <view class="balance">当前余额: ¥{{balance}}</view>
+
+  <view class="grid">
+    <view class="item {{selected==item?'active':''}}" wx:for="{{[100, 500, 1000, 2000, 5000]}}" wx:key="*this" bindtap="select" data-amount="{{item}}">
+      ¥{{item}}
+    </view>
+  </view>
+
+  <button class="btn-pay" bindtap="handlePay">立即支付 ¥{{selected}}</button>
+</view>

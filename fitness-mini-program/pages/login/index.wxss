@@ -1,0 +1,63 @@
+.container {
+  padding: 50rpx;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 50rpx;
+  text-align: center;
+}
+
+.input {
+  background: #f5f5f5;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  margin-bottom: 30rpx;
+}
+
+.btn-primary {
+  background: #1AAD19;
+  color: white;
+  margin-top: 40rpx;
+}
+
+.toggle-text {
+  text-align: center;
+  color: #576b95;
+  margin-top: 30rpx;
+  font-size: 28rpx;
+}
+
+.guest-text {
+  text-align: center;
+  color: #999;
+  margin-top: 50rpx;
+  font-size: 24rpx;
+}
+
+.role-switch {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+.role-btn {
+  padding: 10rpx 40rpx;
+  border: 1px solid #ddd;
+  font-size: 26rpx;
+}
+
+.role-btn:first-child {
+  border-radius: 30rpx 0 0 30rpx;
+}
+
+.role-btn:last-child {
+  border-radius: 0 30rpx 30rpx 0;
+}
+
+.role-btn.active {
+  background: #1AAD19;
+  color: white;
+  border-color: #1AAD19;
+}

@@ -1,0 +1,245 @@
+/* 全局容器 */
+.container {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+/* ================= 教练端样式 ================= */
+
+.coach-card {
+  background: #2c3e50;
+  padding: 50rpx;
+  color: white;
+  margin-bottom: 40rpx;
+}
+
+.coach-info {
+  display: flex;
+  align-items: center;
+}
+
+.c-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  border: 6rpx solid rgba(255, 255, 255, 0.2);
+  margin-right: 40rpx;
+}
+
+.c-name {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.c-tag {
+  font-size: 22rpx;
+  background: #f1c40f;
+  color: #333;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+}
+
+.c-sub {
+  font-size: 26rpx;
+  opacity: 0.7;
+  margin-top: 6rpx;
+}
+
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx;
+  justify-content: space-between;
+}
+
+.menu-box {
+  width: 48%;
+  background: white;
+  border-radius: 16rpx;
+  padding: 40rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.menu-box .icon {
+  font-size: 60rpx;
+  margin-bottom: 20rpx;
+}
+
+.menu-box .txt {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.logout-btn {
+  margin: 50rpx 30rpx;
+  background: #fff;
+  color: #ff4d4f;
+  border: 1rpx solid #eee;
+}
+
+/* ================= 学员端样式 (黑金风格) ================= */
+
+/* 1. 顶部黑色卡片 */
+.header-area {
+  background: #222;
+  /* 深黑 */
+  color: #fff;
+  padding: 40rpx 30rpx;
+  border-bottom-left-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.2);
+}
+
+.user-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50rpx;
+}
+
+.avatar {
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  border: 4rpx solid #fff;
+  margin-right: 24rpx;
+  background: #eee;
+}
+
+.info-col {
+  flex: 1;
+}
+
+.nickname {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+  color: #fff;
+}
+
+.vip-status {
+  font-size: 24rpx;
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.dot {
+  color: #666;
+  font-size: 20rpx;
+  margin-right: 10rpx;
+}
+
+.dot.active {
+  color: #1AAD19;
+}
+
+/* 激活变绿 */
+
+/* 黄色开通按钮 */
+.btn-open {
+  background: linear-gradient(90deg, #d4af37, #f39c12);
+  /* 金色渐变 */
+  color: #000;
+  font-size: 26rpx;
+  font-weight: bold;
+  padding: 12rpx 30rpx;
+  border-radius: 30rpx;
+  box-shadow: 0 4rpx 10rpx rgba(212, 175, 55, 0.4);
+}
+
+/* 资产统计行 */
+.stats-row {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.stat-item .num {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 6rpx;
+  color: #d4af37;
+}
+
+.stat-item .label {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* 2. 菜单列表 */
+.menu-group {
+  background: #fff;
+  margin: 0 20rpx;
+  border-radius: 16rpx;
+  padding: 0 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.03);
+}
+
+.menu-cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.menu-cell:last-child {
+  border-bottom: none;
+}
+
+.cell-left {
+  display: flex;
+  align-items: center;
+}
+
+.icon-emoji {
+  font-size: 36rpx;
+  margin-right: 24rpx;
+  width: 50rpx;
+  text-align: center;
+}
+
+.cell-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-text {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4rpx;
+}
+
+.sub-text {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.cell-arrow {
+  color: #ccc;
+  font-size: 30rpx;
+}
+
+/* 3. 退出按钮区 */
+.logout-area {
+  margin-top: 60rpx;
+  padding: 0 30rpx;
+}
+
+.btn-out {
+  background: white;
+  color: #ff4d4f;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.05);
+  font-weight: bold;
+}

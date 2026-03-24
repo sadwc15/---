@@ -1,0 +1,115 @@
+.container {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+.action-bar {
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 32rpx;
+  border-left: 8rpx solid #1AAD19;
+  padding-left: 20rpx;
+}
+
+.btn-add {
+  background: #1AAD19;
+  color: white;
+  font-size: 26rpx;
+  padding: 10rpx 30rpx;
+  margin: 0;
+  border-radius: 30rpx;
+}
+
+.list {
+  padding: 20rpx;
+}
+
+.card {
+  background: white;
+  border-radius: 16rpx;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.03);
+}
+
+.img {
+  width: 100%;
+  height: 260rpx;
+  background: #eee;
+}
+
+.content {
+  padding: 24rpx;
+}
+
+.row-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+  font-weight: bold;
+  font-size: 32rpx;
+}
+
+.c-price {
+  color: #ff5500;
+}
+
+.time-tag {
+  background: #e6f7ff;
+  color: #1890ff;
+  padding: 10rpx 20rpx;
+  border-radius: 8rpx;
+  display: inline-block;
+  font-size: 26rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.desc-preview {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 24rpx;
+  /* 限制只显示一行，超出省略 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btns {
+  display: flex;
+  gap: 20rpx;
+  border-top: 1rpx solid #f0f0f0;
+  padding-top: 20rpx;
+}
+
+.btn {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+}
+
+.btn.edit {
+  background: #f0f9eb;
+  color: #1AAD19;
+}
+
+.btn.del {
+  background: #fff1f0;
+  color: #ff4d4f;
+}
+
+.empty {
+  text-align: center;
+  margin-top: 100rpx;
+  color: #999;
+}

@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="title">学员训练反馈</view>
+  
+  <view class="form-group">
+    <view class="label">训练状态</view>
+    <view class="tags">
+      <view class="tag {{mood===item?'active':''}}" wx:for="{{['状态爆棚','非常专注','稍显疲惫','进步明显']}}" wx:key="*this" bindtap="selectMood" data-val="{{item}}">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="form-group">
+    <view class="label">详细评语</view>
+    <textarea class="area" placeholder="请输入本节课的训练总结和建议..." bindinput="inputContent" value="{{content}}"></textarea>
+  </view>
+
+  <button class="btn-submit" bindtap="submit">提交报告</button>
+</view>

@@ -1,0 +1,37 @@
+<view class="container">
+  <!-- 日期筛选器 -->
+  <view class="filter">
+    <picker mode="date" value="{{start}}" bindchange="bindStart">
+      <view class="picker-btn">{{start}}</view>
+    </picker>
+    <text class="divider"> 至 </text>
+    <picker mode="date" value="{{end}}" bindchange="bindEnd">
+      <view class="picker-btn">{{end}}</view>
+    </picker>
+  </view>
+
+  <!-- 记录列表 -->
+  <view class="list">
+    <view class="card" wx:for="{{list}}" wx:key="index">
+      <view class="row-title">
+        <view class="c-name">{{item.course.title}}</view>
+        <view class="c-status {{item.bookedCount > 0 ? 'active' : ''}}">
+          {{item.bookedCount > 0 ? '已约: ' + item.bookedCount + '人' : '暂无预约'}}
+        </view>
+      </view>
+      
+      <view class="row-time">🕒 {{item.course.timeStr}}</view>
+      
+      <view class="row-btn">
+        <button size="mini" class="btn-view" bindtap="goStudents" data-students="{{item.students}}">
+          查看学员名单 ({{item.students.length}}) >
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态提示 -->
+  <view wx:if="{{list.length === 0}}" class="empty">
+    该时间段内没有排课记录
+  </view>
+</view>

@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/fitness_db?useSSL=false&serverTimezone=UTC&characterEncoding=utf8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+mybatis:
+    mapper-locations: classpath:mapper/**/*.xml  # 告诉MyBatis去哪里找XML文件
+    type-aliases-package: com.fitness.entity      # 实体类包路径（可选但推荐）
+    configuration:
+      map-underscore-to-camel-case: true  # 开启这个很重要！user_name -> userName
+
+
+# PageHelper分页插件
+pagehelper:
+  helperDialect: mysql
+  supportMethodsArguments: true
+  params: count=countSql

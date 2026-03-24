@@ -1,0 +1,12 @@
+<view class="container" wx:if="{{news}}">
+  <view class="header">
+    <view class="title">{{news.title}}</view>
+    <view class="date">发布时间：{{news.dateStr}}</view>
+  </view>
+
+  <image class="hero-img" src="{{news.image}}" mode="widthFix"></image>
+
+  <view class="content">
+    <text user-select="true">{{news.content}}</text>
+  </view>
+</view>

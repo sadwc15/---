@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="item" wx:for="{{list}}" wx:key="id">
+    <view class="name">{{item.name}}</view>
+    <view class="phone">{{item.phone}}</view>
+  </view>
+  <view wx:if="{{list.length===0}}" style="text-align:center; margin-top:50rpx; color:#999">暂无学员</view>
+</view>

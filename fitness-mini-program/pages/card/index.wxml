@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="card-box gold">
+    <view class="row-1">
+      <view class="name">超级猩猩·至尊金卡</view>
+      <view class="status">使用中</view>
+    </view>
+    <view class="row-2">NO. 8888 8888</view>
+    <view class="row-3">
+      <view>余额: ¥{{balance}}</view>
+      <view>有效期: 永久有效</view>
+    </view>
+  </view>
+</view>

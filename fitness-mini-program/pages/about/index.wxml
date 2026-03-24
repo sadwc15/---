@@ -1,0 +1,47 @@
+<view class="container">
+  <!-- 顶部 Logo 与版本号 -->
+  <view class="header">
+    <image class="logo" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300" mode="aspectFill"></image>
+    <view class="app-name">极速健身预约</view>
+    <view class="version">Version 1.0.0</view>
+  </view>
+
+  <!-- 核心介绍内容 -->
+  <view class="content">
+    <view class="section">
+      <view class="section-title">系统介绍</view>
+      <view class="section-text">
+        高端健身管理系统 v1.0 是专为追求品质生活的您打造的一站式健身服务平台。我们汇聚了顶尖的教练团队和丰富的课程资源，致力于为您提供最流畅、最高效的在线约课体验。
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">服务宗旨</view>
+      <view class="section-text">
+        科技赋能健身，让每一次挥汗如雨都更加便捷。拒绝繁琐推销，专注运动本身。
+      </view>
+    </view>
+
+    <view class="section contact-box">
+      <view class="section-title">联系我们</view>
+      <view class="row">
+        <text class="label">官方热线：</text>
+        <text class="val phone" bindtap="makeCall">138-xxxx-xxxx</text>
+      </view>
+      <view class="row">
+        <text class="label">营业时间：</text>
+        <text class="val">09:00 - 22:00 (全年无休)</text>
+      </view>
+      <view class="row">
+        <text class="label">门店地址：</text>
+        <text class="val">九江学院</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部跳转按钮 -->
+  <view class="footer-area">
+    <button class="btn-profile" bindtap="goProfile">前往 个人中心 / 登录 ></button>
+    <view class="copyright">© 2025 Fitness Management System</view>
+  </view>
+</view>

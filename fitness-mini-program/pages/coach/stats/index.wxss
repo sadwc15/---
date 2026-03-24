@@ -1,0 +1,53 @@
+/* 教练卡片 */
+.coach-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 24rpx;
+  margin: 30rpx;
+  padding: 30rpx;
+  box-shadow: 0 10rpx 30rpx rgba(102, 126, 234, 0.3);
+}
+
+.coach-info {
+  display: flex;
+  align-items: center;
+}
+
+.c-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid #fff;
+  margin-right: 30rpx;
+  background-color: #f0f0f0;
+}
+
+.c-text {
+  flex: 1;
+}
+
+.c-name {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10rpx;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.c-tag {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  margin-left: 16rpx;
+  color: #fff;
+  font-weight: normal;
+}
+
+.c-sub {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 8rpx;
+}

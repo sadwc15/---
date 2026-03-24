@@ -1,0 +1,59 @@
+<view class="container">
+  
+  <!-- 1. 顶部搜索框 -->
+  <view class="search-box">
+    <view class="search-bar">
+      <icon type="search" size="16"></icon>
+      <input class="search-input" placeholder="搜索教练或课程名..." confirm-type="search" bindconfirm="handleSearch" bindinput="onSearchInput"/>
+    </view>
+  </view>
+
+  <!-- 2. 课程/教练列表 -->
+  <view class="list-container">
+    <!-- 
+      注意：这里把 bindtap="goBooking" 改成了 navigator 
+      直接跳转到详情页，并带上 id 参数 
+    -->
+    <navigator 
+      url="/pages/course-detail/index?id={{item.id}}" 
+      class="coach-card" 
+      wx:for="{{courseList}}" 
+      wx:key="id"
+    >
+      
+      <!-- 左侧：图片 (如果没有教练头像，显示默认图) -->
+      <view class="card-left">
+        <image class="avatar" src="{{item.coach.avatar || item.image || 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200'}}" mode="aspectFill"></image>
+      </view>
+
+      <!-- 右侧：详细信息 -->
+      <view class="card-right">
+        <view class="row-1">
+          <text class="coach-name">{{item.title}}</text> <!-- 显示课程名更合适，或 item.coach.name -->
+          <text class="course-price">¥{{item.price}}</text>
+        </view>
+        
+        <!-- 显示教练名 -->
+        <view class="coach-bio">教练：{{item.coach ? item.coach.name : '门店教练'}}</view>
+        <view class="coach-bio desc">{{item.description || '暂无简介'}}</view>
+        
+        <!-- 标签展示 (如果有 tagsArray) -->
+        <view class="tags-row" wx:if="{{item.tagsArray}}">
+          <text class="tag" wx:for="{{item.tagsArray}}" wx:key="*this" wx:for-item="tag">{{tag}}</text>
+        </view>
+
+        <view class="divider"></view>
+
+        <view class="row-bottom">
+          <text class="avail-text">⏱ {{item.duration}}分钟 | {{item.startTime}}</text>
+          <!-- 这里的按钮只是装饰，点击整个卡片都会触发 navigator 跳转 -->
+          <button class="btn-book">去预约</button>
+        </view>
+      </view>
+
+    </navigator>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:if="{{courseList.length === 0}}" class="empty">未找到相关课程</view>
+</view>

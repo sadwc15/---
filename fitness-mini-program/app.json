@@ -1,0 +1,74 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/shop/index",
+    "pages/calendar/index",
+    "pages/profile/index",
+    "pages/course/index",
+    "pages/login/index",
+    "pages/order/index",
+    "pages/product-detail/index",
+    "pages/coach/schedule/index",
+    "pages/coach/records/index",
+    "pages/coach/students/index",
+    "pages/coach/password/index",
+    "pages/coach/record/index",
+    "pages/news-detail/index",
+    "pages/course/booking",
+    "pages/my-bookings/index",
+    "pages/class-record/index",
+    "pages/recharge/index",
+    "pages/favorite/index",
+    "pages/shop/buy",
+    "pages/coupon/index",
+    "pages/card/index",
+    "pages/coach/write-record/index",
+    "pages/course-detail/index",
+    "pages/coach/course-edit/index",
+    "pages/coach/course-add/index",
+    "pages/about/index",
+    "pages/my-courses/index",
+    "pages/coach/classroom/index",
+    "pages/coach/class-detail/index",
+    "pages/coach/stats/index",
+    "pages/my-info/index",
+    "pages/order/receiver-form/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "健身管理系统",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#1AAD19",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "assets/images/home.png",
+        "selectedIconPath": "assets/images/home-active.png"
+      },
+      {
+        "pagePath": "pages/shop/index",
+        "text": "商城",
+        "iconPath": "assets/images/shop.png",
+        "selectedIconPath": "assets/images/shop-active.png"
+      },
+      {
+        "pagePath": "pages/calendar/index",
+        "text": "预约日历",
+        "iconPath": "assets/images/calendar.png",
+        "selectedIconPath": "assets/images/calendar-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "个人中心",
+        "iconPath": "assets/images/profile.png",
+        "selectedIconPath": "assets/images/profile-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,91 @@
+.container {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+/* 筛选栏 */
+.filter {
+  background: white;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  border-radius: 12rpx;
+}
+
+.picker-btn {
+  background: #f0f0f0;
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.divider {
+  color: #999;
+}
+
+/* 卡片列表 */
+.card {
+  background: white;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.03);
+}
+
+.row-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.c-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.c-status {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.c-status.active {
+  color: #1AAD19;
+  font-weight: bold;
+}
+
+.row-time {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 24rpx;
+  background: #f9f9f9;
+  padding: 10rpx;
+  border-radius: 8rpx;
+  display: inline-block;
+}
+
+.row-btn {
+  text-align: right;
+  border-top: 1rpx solid #f0f0f0;
+  padding-top: 20rpx;
+}
+
+.btn-view {
+  background: white;
+  color: #1890ff;
+  border: 1rpx solid #1890ff;
+  font-size: 24rpx;
+  border-radius: 30rpx;
+}
+
+.empty {
+  text-align: center;
+  margin-top: 100rpx;
+  color: #ccc;
+  font-size: 28rpx;
+}

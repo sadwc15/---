@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="header-tip">修改课程信息</view>
+
+  <view class="form-group">
+    <view class="label">课程名称</view>
+    <input class="input" value="{{title}}" bindinput="onInput" data-field="title" />
+  </view>
+
+  <view class="form-group">
+    <view class="label">价格 (元)</view>
+    <input class="input" type="digit" value="{{price}}" bindinput="onInput" data-field="price" />
+  </view>
+
+  <!-- 简介输入框 (带回显) -->
+  <view class="form-group">
+    <view class="label">课程简介</view>
+    <textarea 
+      class="textarea" 
+      value="{{description}}" 
+      placeholder="请输入课程简介..." 
+      bindinput="onInput" 
+      data-field="description"
+    ></textarea>
+  </view>
+
+  <view class="form-group">
+    <view class="label">开始时间</view>
+    <picker mode="date" bindchange="onDateChange">
+      <view class="picker">{{startDate}}</view>
+    </picker>
+    <picker mode="time" bindchange="onTimeChange" style="margin-left:20rpx">
+      <view class="picker">{{startTime}}</view>
+    </picker>
+  </view>
+  
+  <view class="form-group">
+    <view class="label">时长 (分钟)</view>
+    <input class="input" type="number" value="{{duration}}" bindinput="onInput" data-field="duration" />
+  </view>
+
+  <view class="form-group">
+    <view class="label">封面图</view>
+    <view class="upload-box" bindtap="chooseImage">
+      <image src="{{image}}" mode="aspectFill"></image>
+    </view>
+  </view>
+
+  <view class="btn-row">
+    <button class="btn-del" bindtap="deleteCourse">删除课程</button>
+    <button class="btn-save" bindtap="submit">保存修改</button>
+  </view>
+</view>

@@ -1,0 +1,65 @@
+/* pages/card/index.wxss */
+.container {
+  padding: 40rpx;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+.card-box {
+  height: 360rpx;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 金卡样式 */
+.gold {
+  background: linear-gradient(135deg, #333 0%, #111 100%);
+  border: 2rpx solid #d4af37;
+  position: relative;
+  overflow: hidden;
+}
+
+.gold::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300rpx;
+  height: 300rpx;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.row-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #d4af37;
+}
+
+.status {
+  font-size: 24rpx;
+  background: rgba(212, 175, 55, 0.2);
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+}
+
+.row-2 {
+  font-size: 40rpx;
+  letter-spacing: 4rpx;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.5);
+}
+
+.row-3 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  opacity: 0.8;
+}

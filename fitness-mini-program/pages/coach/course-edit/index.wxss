@@ -1,0 +1,87 @@
+.container {
+  padding: 30rpx;
+  background: #fff;
+  min-height: 100vh;
+}
+
+.header-tip {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 40rpx;
+  border-left: 8rpx solid #1AAD19;
+  padding-left: 20rpx;
+}
+
+.form-group {
+  margin-bottom: 30rpx;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.input {
+  background: #f8f8f8;
+  height: 80rpx;
+  padding: 0 20rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+
+/* textarea 样式 */
+.textarea {
+  width: 100%;
+  height: 160rpx;
+  background: #f8f8f8;
+  padding: 20rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.picker {
+  background: #f8f8f8;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 20rpx;
+  border-radius: 8rpx;
+  min-width: 200rpx;
+  text-align: center;
+  color: #333;
+}
+
+.upload-box {
+  width: 200rpx;
+  height: 200rpx;
+  background: #f8f8f8;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.upload-box image {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-row {
+  display: flex;
+  margin-top: 60rpx;
+  gap: 20rpx;
+}
+
+.btn-del {
+  background: #ff4d4f;
+  color: white;
+  flex: 1;
+}
+
+.btn-save {
+  background: #1AAD19;
+  color: white;
+  flex: 2;
+}

@@ -1,0 +1,43 @@
+<view class="container">
+  <!-- 加载中状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:elif="{{!loading && sessions.length === 0}}">
+    <image class="empty-icon" src="/assets/images/empty-course.png" mode="aspectFit"></image>
+    <text class="empty-text">暂无进行中的课程</text>
+  </view>
+
+  <!-- 课程列表 -->
+  <scroll-view class="session-list" wx:else scroll-y enhanced show-scrollbar="{{false}}">
+    <view class="card" wx:for="{{sessions}}" wx:key="bookingId" data-id="{{item.bookingId}}">
+      <!-- 左侧：学员头像 -->
+      <view class="card-left">
+        <image class="avatar" 
+               src="{{item.member.avatar || '/assets/images/default-avatar.png'}}" 
+               mode="aspectFill"
+               binderror="onAvatarError"
+               data-index="{{index}}"></image>
+      </view>
+
+      <!-- 中间：学员和课程信息 -->
+      <view class="card-center">
+        <view class="member-name">{{item.member.name || '未知学员'}}</view>
+        <view class="course-name">{{item.course.title || '未命名课程'}}</view>
+        <view class="booking-time">{{formatTime(item.bookingTime)}}</view>
+      </view>
+
+      <!-- 右侧：进入课堂按钮 -->
+      <view class="card-right">
+        <button class="btn-enter" 
+                bindtap="goToClassDetail" 
+                data-bookingid="{{item.bookingId}}"
+                hover-class="btn-hover">
+          进入课堂
+        </button>
+      </view>
+    </view>
+  </scroll-view>
+</view>

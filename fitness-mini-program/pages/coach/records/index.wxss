@@ -1,0 +1,87 @@
+.container {
+  padding: 30rpx;
+  background: #f5f7fa;
+  min-height: 100vh;
+}
+
+.header-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  color: #333;
+  border-left: 8rpx solid #1AAD19;
+  padding-left: 20rpx;
+}
+
+.card {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.member-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.time {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.card-body {
+  margin-bottom: 20rpx;
+}
+
+.row {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.status {
+  font-weight: bold;
+}
+
+.status.green {
+  color: #1AAD19;
+}
+
+.status.red {
+  color: #ff4d4f;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1rpx dashed #eee;
+  padding-top: 20rpx;
+}
+
+.btn-write {
+  background: #1AAD19;
+  color: white;
+  font-size: 26rpx;
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+  margin: 0;
+  /* 去除微信默认margin */
+}
+
+.empty {
+  text-align: center;
+  margin-top: 100rpx;
+  color: #999;
+}

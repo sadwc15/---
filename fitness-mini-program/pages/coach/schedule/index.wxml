@@ -1,0 +1,33 @@
+<view class="container">
+  <view class="action-bar">
+    <view class="title">排期列表</view>
+    <!-- 修改 1：绑定 goAdd -->
+    <button class="btn-add" bindtap="goAdd">+ 新增课程</button>
+  </view>
+
+  <view class="list">
+    <view class="card" wx:for="{{courses}}" wx:key="id">
+      <!-- 图片容错处理 -->
+      <image class="img" src="{{item.image || 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=300'}}" mode="aspectFill"></image>
+      
+      <view class="content">
+        <view class="row-top">
+          <text class="c-title">{{item.title}}</text>
+          <text class="c-price">¥{{item.price}}</text>
+        </view>
+        
+        <view class="time-tag">🕒 {{item.timeStr}}</view>
+        <!-- 显示时长和简介预览 -->
+        <view class="desc-preview">{{item.duration}}分钟 | {{item.description || '暂无简介'}}</view>
+        
+        <view class="btns">
+          <!-- 修改 2：绑定 goEdit，并且传 id 而不是 item -->
+          <view class="btn edit" bindtap="goEdit" data-id="{{item.id}}">修改信息/时间</view>
+          <view class="btn del" bindtap="handleDelete" data-id="{{item.id}}">取消</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view wx:if="{{courses.length===0}}" class="empty">暂无排课</view>
+</view>

@@ -1,0 +1,80 @@
+<view class="container" wx:if="{{course}}">
+  
+  <!-- 顶部课程卡片 -->
+  <view class="header-card">
+    <view class="title">{{course.title}}</view>
+    <view class="sub">教练：{{course.coach ? course.coach.name : '门店教练'}}</view>
+  </view>
+
+  <!-- 1. 日期选择 (横向滚动) -->
+  <view class="section">
+    <view class="sec-title">选择日期</view>
+    <scroll-view scroll-x class="date-scroll" enable-flex>
+      <view 
+        class="date-item {{selectedDateIndex === index ? 'active' : ''}}" 
+        wx:for="{{dateList}}" 
+        wx:key="full"
+        bindtap="selectDate"
+        data-index="{{index}}"
+      >
+        <view class="day-label">{{item.label}}</view>
+        <view class="day-num">{{item.day}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 2. 时段选择 -->
+  <view class="section">
+    <view class="sec-title">选择时段</view>
+    <view class="time-grid">
+      <view class="time-item {{selectedTime=='10:00'?'active':''}}" bindtap="selectTime" data-time="10:00">10:00</view>
+      <view class="time-item {{selectedTime=='14:00'?'active':''}}" bindtap="selectTime" data-time="14:00">14:00</view>
+      <view class="time-item {{selectedTime=='16:00'?'active':''}}" bindtap="selectTime" data-time="16:00">16:00</view>
+      <view class="time-item {{selectedTime=='19:00'?'active':''}}" bindtap="selectTime" data-time="19:00">19:00</view>
+    </view>
+  </view>
+
+  <!-- 底部栏：优惠券与支付 -->
+  <view class="footer-pay">
+    
+    <!-- 优惠券栏 (点击弹出选择) -->
+    <view class="coupon-bar" bindtap="openCouponModal">
+      <view class="c-left">优惠券</view>
+      <view class="c-right">
+        <text wx:if="{{usingCoupon}}" class="red">-¥{{discountAmount}}</text>
+        <text wx:elif="{{couponList.length > 0}}" class="gray">{{couponList.length}}张可用</text>
+        <text wx:else class="gray">无可用券</text>
+        <text class="arrow">></text>
+      </view>
+    </view>
+
+    <view class="pay-row">
+      <view class="price-box">
+        <text class="total-label">实付</text>
+        <text class="symbol">¥</text>
+        <text class="amount">{{finalPrice}}</text>
+        <text class="old" wx:if="{{usingCoupon}}">¥{{originalPrice}}</text>
+      </view>
+      <button class="btn-confirm" bindtap="submitPayment">确认支付</button>
+    </view>
+  </view>
+
+  <!-- === 优惠券选择弹窗 === -->
+  <view class="mask" wx:if="{{showCouponModal}}" bindtap="closeCouponModal"></view>
+  <view class="coupon-modal {{showCouponModal ? 'show' : ''}}">
+    <view class="modal-title">选择优惠券</view>
+    <scroll-view scroll-y class="c-list">
+      <view class="c-item" wx:for="{{couponList}}" wx:key="id" bindtap="chooseCoupon" data-item="{{item}}">
+        <view class="c-info">
+          <view class="c-amt">¥{{item.amount}}</view>
+          <view class="c-name">{{item.title}}</view>
+        </view>
+        <!-- 勾选标记 -->
+        <icon type="success" size="20" color="#1AAD19" wx:if="{{currentCoupon.id === item.id}}"/>
+        <view class="circle" wx:else></view>
+      </view>
+    </scroll-view>
+    <button class="btn-close" bindtap="closeCouponModal">关闭</button>
+  </view>
+
+</view>

@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="timeline">
+    <view class="schedule-card {{item.status}}" wx:for="{{scheduleList}}" wx:key="id" bindtap="handleCardTap" data-item="{{item}}">
+      
+      <!-- 右上角状态角标 -->
+      <view class="badge">
+        <text wx:if="{{item.status === 'OPEN'}}">可约</text>
+        <text wx:if="{{item.status === 'FULL'}}">已满</text>
+        <text wx:if="{{item.status === 'BOOKED'}}">已约</text>
+      </view>
+
+      <view class="time-col">
+        <view class="date">{{item.dateStr}}</view>
+        <view class="time">{{item.timeStr}}</view>
+      </view>
+      
+      <view class="info-col">
+        <view class="title">{{item.title}}</view>
+        <view class="desc">教练: {{item.coach ? item.coach.name : '待定'}}</view>
+        <view class="stock-tag {{item.capacity < 3 ? 'low' : ''}}">
+          剩余席位: {{item.capacity}}
+        </view>
+      </view>
+
+      <view class="action-col">
+        <view class="btn book" wx:if="{{item.status === 'OPEN'}}">预约</view>
+        <view class="btn wait" wx:if="{{item.status === 'FULL'}}">候补</view>
+        <view class="btn refund" wx:if="{{item.status === 'BOOKED'}}">退票</view>
+      </view>
+
+    </view>
+  </view>
+  
+  <view class="empty" wx:if="{{scheduleList.length === 0}}">暂无排课计划</view>
+</view>

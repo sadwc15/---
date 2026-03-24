@@ -1,0 +1,44 @@
+<view class="container">
+  <view class="header-tip">发布新课程</view>
+
+  <view class="form-group">
+    <view class="label">课程名称</view>
+    <input class="input" placeholder="请输入课程名" bindinput="onInput" data-field="title" />
+  </view>
+
+  <view class="form-group">
+    <view class="label">价格 (元)</view>
+    <input class="input" type="digit" placeholder="0.00" bindinput="onInput" data-field="price" />
+  </view>
+
+  <!-- 简介输入框 -->
+  <view class="form-group">
+    <view class="label">课程简介</view>
+    <textarea class="textarea" placeholder="简单介绍一下课程内容..." bindinput="onInput" data-field="description"></textarea>
+  </view>
+
+  <view class="form-group">
+    <view class="label">开始时间</view>
+    <picker mode="date" bindchange="onDateChange">
+      <view class="picker">{{startDate || '选择日期'}}</view>
+    </picker>
+    <picker mode="time" bindchange="onTimeChange" style="margin-left:20rpx">
+      <view class="picker">{{startTime || '选择时间'}}</view>
+    </picker>
+  </view>
+  
+  <view class="form-group">
+    <view class="label">时长 (分钟)</view>
+    <input class="input" type="number" placeholder="例如: 60" bindinput="onInput" data-field="duration" />
+  </view>
+
+  <view class="form-group">
+    <view class="label">封面图</view>
+    <view class="upload-box" bindtap="chooseImage">
+      <image wx:if="{{image}}" src="{{image}}" mode="aspectFill"></image>
+      <view wx:else class="plus">+</view>
+    </view>
+  </view>
+
+  <button class="btn-submit" bindtap="submit">发布课程</button>
+</view>

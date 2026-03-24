@@ -1,0 +1,17 @@
+<view class="container" wx:if="{{record}}">
+  <view class="header">
+    <view class="label">本节课状态</view>
+    <view class="mood">{{record.mood || '不错'}}</view>
+    <view class="time">{{record.timeStr}}</view>
+  </view>
+
+  <view class="section">
+    <view class="title">教练反馈</view>
+    <view class="content">{{record.content}}</view>
+  </view>
+
+  <view class="section" wx:if="{{record.images}}">
+    <view class="title">训练精彩瞬间</view>
+    <image src="{{record.images}}" mode="widthFix" style="width:100%; border-radius:12rpx;"></image>
+  </view>
+</view>

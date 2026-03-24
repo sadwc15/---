@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="order-list">
+    <view class="card" wx:for="{{orders}}" wx:key="id">
+      <!-- 头部：时间 + 状态 -->
+      <view class="header">
+        <text class="time">{{item.timeStr}}</text>
+        <text class="status">已完成</text>
+      </view>
+
+      <!-- 内容：图片 + 信息 -->
+      <view class="body">
+        <image class="thumb" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="info">
+          <view class="name">{{item.productName}}</view>
+          <view class="price">实付: ¥{{item.price}}</view>
+        </view>
+      </view>
+      
+      <!-- 底部：按钮 -->
+      <view class="footer">
+        <button class="btn-outline">查看物流</button>
+        <button class="btn-solid">再次购买</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:if="{{orders.length === 0}}" class="empty">
+    <image src="/assets/images/profile.png" style="opacity:0.2;width:100rpx;height:100rpx"></image>
+    <view>您还没有购买过商品</view>
+  </view>
+</view>

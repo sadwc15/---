@@ -1,0 +1,68 @@
+<view class="container">
+  <!-- 商品卡片 -->
+  <view class="product-card">
+    <image class="product-image" src="{{product.image}}" mode="aspectFill"></image>
+    <view class="product-info">
+      <view class="product-name">{{product.name}}</view>
+      <view class="product-price">¥{{product.price}}</view>
+    </view>
+  </view>
+
+  <!-- 优惠券信息（如果有） -->
+  <view class="coupon-card" wx:if="{{usingCoupon}}">
+    <view class="coupon-left">
+      <text class="coupon-icon">🎫</text>
+      <text class="coupon-text">已使用优惠券</text>
+    </view>
+    <text class="coupon-amount">-¥{{couponAmount}}</text>
+  </view>
+
+  <!-- 实付金额卡片 -->
+  <view class="price-card">
+    <view class="price-row">
+      <text class="price-label">商品金额</text>
+      <text class="price-value">¥{{product.price}}</text>
+    </view>
+    <view class="price-row" wx:if="{{usingCoupon}}">
+      <text class="price-label">优惠抵扣</text>
+      <text class="price-value discount">-¥{{couponAmount}}</text>
+    </view>
+    <view class="price-row total">
+      <text class="price-label">实付金额</text>
+      <text class="final-price">¥{{finalPrice}}</text>
+    </view>
+  </view>
+
+  <!-- 收货信息卡片 -->
+  <view class="receiver-card" bindtap="goToReceiverForm">
+    <view class="receiver-header">
+      <view class="receiver-title">
+        <text class="receiver-icon">📍</text>
+        <text>收货信息</text>
+      </view>
+      <view class="receiver-action">
+        <text wx:if="{{receiverInfo}}" class="action-text">修改</text>
+        <text wx:else class="action-text fill">去填写</text>
+        <text class="arrow">›</text>
+      </view>
+    </view>
+    
+    <view class="receiver-content" wx:if="{{receiverInfo}}">
+      <text class="receiver-name">{{receiverInfo.name}} {{receiverInfo.phone}}</text>
+      <text class="receiver-address">{{receiverInfo.address}}</text>
+    </view>
+    
+    <view class="receiver-empty" wx:else>
+      <text class="empty-text">请填写收货人信息</text>
+    </view>
+  </view>
+
+  <!-- 底部固定栏 -->
+  <view class="bottom-bar">
+    <view class="total-section">
+      <text class="total-label">合计</text>
+      <text class="total-price">¥{{finalPrice}}</text>
+    </view>
+    <button class="pay-btn" bindtap="confirmPay">确认支付</button>
+  </view>
+</view>

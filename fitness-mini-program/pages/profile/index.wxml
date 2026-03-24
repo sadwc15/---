@@ -1,0 +1,149 @@
+<view class="container">
+
+<!-- ================== 教练端视图 (保持不变) ================== -->
+<block wx:if="{{role === 'COACH'}}">
+  <view class="coach-card">
+    <view class="coach-info">
+      <image class="c-avatar" src="{{userInfo.avatar || 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=200'}}" mode="aspectFill"></image>
+      <view class="c-text">
+        <view class="c-name">{{userInfo.name}} <text class="c-tag">教练</text></view>
+        <view class="c-sub">登录次数: {{userInfo.loginCount || 0}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 两行菜单布局：第一行3个，第二行3个 -->
+  <view class="menu-grid">
+    <!-- 第一行：原本的3个 -->
+    <navigator url="/pages/coach/schedule/index" class="menu-box blue">
+      <view class="icon">📅</view>
+      <view class="txt">排期设置</view>
+    </navigator>
+    <navigator url="/pages/coach/records/index" class="menu-box green">
+      <view class="icon">📋</view>
+      <view class="txt">预约记录</view>
+    </navigator>
+    <navigator url="/pages/coach/password/index" class="menu-box orange">
+      <view class="icon">🔒</view>
+      <view class="txt">修改密码</view>
+    </navigator>
+    
+    <!-- 第二行：新增的2个 + 预览页面 -->
+    <navigator url="/pages/coach/classroom/index?coachId={{userInfo.id}}" class="menu-box cyan">
+      <view class="icon">📚</view>
+      <view class="txt">我的课堂</view>
+    </navigator>
+    <navigator url="/pages/coach/stats/index?coachId={{userInfo.id}}" class="menu-box gold">
+      <view class="icon">🏆</view>
+      <view class="txt">累计上课</view>
+    </navigator>
+    <view bindtap="goPreview" class="menu-box purple">
+      <view class="icon">👀</view>
+      <view class="txt">预览页面</view>
+    </view>
+  </view>
+  
+  <button class="logout-btn" bindtap="handleLogout">退出登录</button>
+</block>
+
+
+<!-- ================== 学员端视图 (黑金风格) ================== -->
+<block wx:else>
+  
+  <!-- 1. 顶部黑色卡片区 -->
+  <view class="header-area">
+    <!-- 用户信息行 -->
+    <view class="user-row" bindtap="{{userInfo ? '' : 'goLogin'}}">
+      <image class="avatar" src="{{userInfo.avatar || '/assets/images/profile.png'}}" mode="aspectFill"></image>
+      
+      <view class="info-col">
+        <view class="nickname">{{userInfo.name || '点击登录'}}</view>
+        <view class="vip-status">
+           <text class="dot {{userInfo.balance>0 ? 'active':''}}">●</text> {{memberStatus}}
+        </view>
+      </view>
+
+      <!-- 黄色开通按钮 -->
+      <view class="btn-open" catchtap="goRecharge">
+        <text>开通/充值</text>
+      </view>
+    </view>
+
+    <!-- 资产统计行 -->
+    <view class="stats-row">
+      <view class="stat-item" bindtap="goCoupons">
+        <view class="num">{{couponCount}}</view>
+        <view class="label">优惠券</view>
+      </view>
+      <view class="stat-item" bindtap="goCards">
+        <view class="num">{{cardCount}}</view>
+        <view class="label">健身卡</view>
+      </view>
+      <view class="stat-item">
+        <view class="num" wx:if="{{userInfo}}">¥{{userInfo.balance}}</view>
+        <view class="num" wx:else>-</view>
+        <view class="label">余额</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 2. 功能菜单区 -->
+  <view class="menu-group">
+    
+    <!-- 收藏管理 -->
+    <view class="menu-cell" bindtap="goCollection">
+      <view class="cell-left">
+        <view class="icon-emoji">❤️</view>
+        <view class="cell-text">
+          <view class="main-text">收藏管理</view>
+          <view class="sub-text">教练课程 / 商品好物</view>
+        </view>
+      </view>
+      <view class="cell-arrow">></view>
+    </view>
+
+    <!-- 我的预约 -->
+    <navigator url="/pages/my-bookings/index" class="menu-cell">
+      <view class="cell-left">
+        <view class="icon-emoji">📅</view>
+        <view class="cell-text">
+          <view class="main-text">我的预约</view>
+          <view class="sub-text">查看课后记录 / 改期取消</view>
+        </view>
+      </view>
+      <view class="cell-arrow">></view>
+    </navigator>
+
+    <!-- 我的订单 -->
+    <navigator url="/pages/order/index" class="menu-cell">
+      <view class="cell-left">
+        <view class="icon-emoji">🛒</view>
+        <view class="cell-text">
+          <view class="main-text">商城订单</view>
+          <view class="sub-text">查看购买历史</view>
+        </view>
+      </view>
+      <view class="cell-arrow">></view>
+    </navigator>
+<!-- 个人中心 -->
+    <navigator url="/pages/my-info/index?phone={{phone}}" class="menu-cell">
+      <view class="cell-left">
+        <view class="icon-emoji">👤</view>
+        <view class="cell-text">
+          <view class="main-text">个人中心</view>
+          <view class="sub-text">更新我的信息</view>
+        </view>
+      </view>
+      <view class="cell-arrow">></view>
+    </navigator>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-area" wx:if="{{userInfo}}">
+    <button class="btn-out" bindtap="handleLogout">退出当前账号</button>
+  </view>
+  
+
+</block>
+
+</view>

@@ -1,0 +1,156 @@
+/* === 全局黑金酷炫风 === */
+page {
+  background-color: #141414; /* 深灰近黑背景 */
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 1. 顶部 Banner */
+.header-banner {
+  position: relative;
+  width: 100%;
+  height: 500rpx;
+}
+.banner-bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.banner-mask {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(20,20,20,1)); /* 底部渐变黑，融合背景 */
+}
+.banner-content {
+  position: absolute;
+  bottom: 100rpx; /* 留出位置给悬浮卡片 */
+  left: 40rpx;
+  width: 90%;
+  z-index: 2;
+}
+.brand-title {
+  color: #d4af37; /* 猩猩黄/金色 */
+  font-size: 48rpx;
+  font-weight: 900; /* 特粗 */
+  font-style: italic;
+  letter-spacing: 2rpx;
+  margin-bottom: 10rpx;
+}
+.brand-slogan {
+  color: rgba(255,255,255,0.8);
+  font-size: 24rpx;
+  margin-bottom: 30rpx;
+  letter-spacing: 4rpx;
+}
+.search-fake {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 40rpx;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  width: 80%;
+}
+.search-fake text {
+  color: rgba(255,255,255,0.6);
+  font-size: 26rpx;
+  margin-left: 16rpx;
+}
+
+/* 2. 悬浮菜单卡片 (修复竖排问题的核心) */
+.menu-card-wrapper {
+  position: relative;
+  margin-top: -60rpx; /* 向上插入 Banner */
+  padding: 0 30rpx;
+  z-index: 10;
+}
+.menu-card {
+  background: #222; /* 深灰卡片 */
+  border-radius: 24rpx;
+  padding: 40rpx 20rpx;
+  box-shadow: 0 10rpx 40rpx rgba(0,0,0,0.4);
+  
+  /* === 布局关键代码 === */
+  display: flex;
+  flex-wrap: wrap; /* 允许换行 */
+  justify-content: flex-start;
+}
+
+.menu-item {
+  width: 25%; /* 一行四个，或者改为 33.33% 一行三个 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+/* 如果想要一行三个，把上面的 width: 25% 改为 width: 33.33% 即可 */
+
+.menu-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 12rpx;
+}
+.menu-item text {
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+/* 3. 热门活动 (大卡片流) */
+.section-wrapper {
+  padding: 40rpx 30rpx;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30rpx;
+}
+.title-big {
+  font-size: 36rpx;
+  color: #fff;
+  font-weight: bold;
+}
+.title-more {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.act-card {
+  background: #222;
+  border-radius: 20rpx;
+  overflow: hidden;
+  margin-bottom: 40rpx;
+}
+.act-img {
+  width: 100%;
+  height: 320rpx; /* 大图展示 */
+  display: block;
+}
+.act-info {
+  padding: 24rpx;
+}
+.act-title {
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+.act-tags {
+  display: flex;
+}
+.tag {
+  background: #d4af37; /* 品牌色 */
+  color: #000;
+  font-size: 20rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+  font-weight: bold;
+  margin-right: 10rpx;
+}

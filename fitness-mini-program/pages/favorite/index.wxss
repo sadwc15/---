@@ -1,0 +1,45 @@
+.container { padding: 30rpx; background: #f7f8fa; min-height: 100vh; }
+
+.grid { display: flex; flex-wrap: wrap; justify-content: space-between; }
+
+.card { 
+  width: 48%; 
+  background: white; 
+  border-radius: 16rpx; 
+  margin-bottom: 30rpx; 
+  overflow: hidden; 
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05); 
+}
+
+.img-box { position: relative; width: 100%; height: 260rpx; }
+.img { width: 100%; height: 100%; background: #eee; }
+
+/* 左上角标签 */
+.tag { 
+  position: absolute; 
+  top: 16rpx; left: 16rpx; 
+  font-size: 20rpx; 
+  padding: 4rpx 12rpx; 
+  border-radius: 8rpx; 
+  color: white; 
+  font-weight: bold; 
+}
+.tag-p { background: #ff9c00; } /* 商品橙色 */
+.tag-c { background: #1AAD19; } /* 课程绿色 */
+
+.info { padding: 20rpx; }
+.name { 
+  font-size: 28rpx; 
+  font-weight: bold; 
+  color: #333; 
+  margin-bottom: 16rpx; 
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; 
+  height: 80rpx; /* 固定高度防止长短不一 */
+}
+
+.price-row { display: flex; justify-content: space-between; align-items: center; }
+.price { font-size: 32rpx; color: #d4af37; font-weight: bold; }
+.fav-icon { font-size: 24rpx; }
+
+.empty-box { text-align: center; margin-top: 200rpx; color: #999; font-size: 28rpx; }
+.empty-img { width: 100rpx; height: 100rpx; margin-bottom: 20rpx; }

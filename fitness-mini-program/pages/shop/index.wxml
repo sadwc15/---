@@ -1,0 +1,27 @@
+<view class="container">
+  <!-- 顶部通栏 -->
+  <view class="banner">
+    <view class="banner-title">健身补剂 & 装备</view>
+    <view class="banner-sub">精选好物 助力训练</view>
+  </view>
+
+  <view class="goods-list">
+    <view class="goods-item" wx:for="{{products}}" wx:key="id" bindtap="goBuy" data-item="{{item}}">
+      <image class="goods-img" src="{{item.image}}" mode="aspectFill"></image>
+      
+      <view class="goods-info">
+        <view class="name">{{item.name}}</view>
+        <view class="desc">{{item.description}}</view>
+        
+        <view class="row-bottom">
+           <view class="price">¥{{item.price}}</view>
+           
+           <!-- 这里的 catchtap 防止点击爱心时触发 goBuy 跳转 -->
+           <view class="fav-btn" catchtap="handleFav" data-id="{{item.id}}">❤️ 收藏</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view wx:if="{{products.length === 0}}" class="empty">暂无商品上架</view>
+</view>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitness.mapper.CoachesMapper">
+    
+    <resultMap type="Coaches" id="CoachesResult">
+        <result property="id"    column="id"    />
+        <result property="name"    column="name"    />
+        <result property="expertise"    column="expertise"    />
+        <result property="bio"    column="bio"    />
+        <result property="avatar"    column="avatar"    />
+        <result property="lastLoginTime"    column="last_login_time"    />
+        <result property="loginCount"    column="login_count"    />
+        <result property="password"    column="password"    />
+        <result property="phone"    column="phone"    />
+        <result property="tags"    column="tags"    />
+    </resultMap>
+
+    <sql id="selectCoachesVo">
+        select id, name, expertise, bio, avatar, last_login_time, login_count, password, phone, tags from coaches
+    </sql>
+
+    <select id="selectCoachesList" parameterType="Coaches" resultMap="CoachesResult">
+        <include refid="selectCoachesVo"/>
+        <where>  
+            <if test="name != null  and name != ''"> and name like concat('%', #{name}, '%')</if>
+            <if test="expertise != null  and expertise != ''"> and expertise = #{expertise}</if>
+            <if test="bio != null  and bio != ''"> and bio = #{bio}</if>
+            <if test="avatar != null  and avatar != ''"> and avatar = #{avatar}</if>
+            <if test="lastLoginTime != null "> and last_login_time = #{lastLoginTime}</if>
+            <if test="loginCount != null "> and login_count = #{loginCount}</if>
+            <if test="password != null  and password != ''"> and password = #{password}</if>
+            <if test="phone != null  and phone != ''"> and phone = #{phone}</if>
+            <if test="tags != null  and tags != ''"> and tags = #{tags}</if>
+        </where>
+    </select>
+    
+    <select id="selectCoachesById" parameterType="Long" resultMap="CoachesResult">
+        <include refid="selectCoachesVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertCoaches" parameterType="Coaches" useGeneratedKeys="true" keyProperty="id">
+        insert into coaches
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">name,</if>
+            <if test="expertise != null">expertise,</if>
+            <if test="bio != null">bio,</if>
+            <if test="avatar != null">avatar,</if>
+            <if test="lastLoginTime != null">last_login_time,</if>
+            <if test="loginCount != null">login_count,</if>
+            <if test="password != null">password,</if>
+            <if test="phone != null">phone,</if>
+            <if test="tags != null">tags,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">#{name},</if>
+            <if test="expertise != null">#{expertise},</if>
+            <if test="bio != null">#{bio},</if>
+            <if test="avatar != null">#{avatar},</if>
+            <if test="lastLoginTime != null">#{lastLoginTime},</if>
+            <if test="loginCount != null">#{loginCount},</if>
+            <if test="password != null">#{password},</if>
+            <if test="phone != null">#{phone},</if>
+            <if test="tags != null">#{tags},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCoaches" parameterType="Coaches">
+        update coaches
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="expertise != null">expertise = #{expertise},</if>
+            <if test="bio != null">bio = #{bio},</if>
+            <if test="avatar != null">avatar = #{avatar},</if>
+            <if test="lastLoginTime != null">last_login_time = #{lastLoginTime},</if>
+            <if test="loginCount != null">login_count = #{loginCount},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="tags != null">tags = #{tags},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCoachesById" parameterType="Long">
+        delete from coaches where id = #{id}
+    </delete>
+
+    <delete id="deleteCoachesByIds" parameterType="String">
+        delete from coaches where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

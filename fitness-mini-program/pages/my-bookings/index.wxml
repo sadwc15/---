@@ -1,0 +1,50 @@
+<view class="container">
+  <!-- 给卡片添加点击事件，用catchtap避免与内部按钮冲突 -->
+  <view class="card" 
+        wx:for="{{list}}" 
+        wx:key="id" 
+        catchtap="goToClassDetail" 
+        data-id="{{item.id}}">
+    
+    <!-- 头部：状态 + 课程名 -->
+    <view class="header">
+      <text class="title">{{item.course.title}}</text>
+      <!-- 状态判断 -->
+      <text class="status cancelled" wx:if="{{item.status == 2}}">已取消</text>
+      <text class="status finished" wx:elif="{{item.status == 1}}">已完成</text>
+      <text class="status upcoming" wx:else>待上课</text>
+    </view>
+
+    <!-- 中部：详情 -->
+    <view class="body">
+      <view class="row">教练：{{item.course.coach ? item.course.coach.name : '店内教练'}}</view>
+      <view class="row">时间：{{item.bookingTime}}</view>
+      <view class="row">价格：¥{{item.course.price}}</view>
+    </view>
+
+    <!-- 底部：操作按钮组 -->
+    <view class="footer">
+      
+      <!-- 情况1：已取消 -->
+      <view wx:if="{{item.status == 2}}">
+         <text class="tip">订单已关闭</text>
+      </view>
+
+      <!-- 情况2：已完成 (显示查看报告) -->
+      <view wx:elif="{{item.status == 1}}">
+         <!-- 注意：这里必须用bindtap，因为我们需要按钮能正常工作，同时catchtap在父元素阻止了冒泡 -->
+         <button class="btn outline" bindtap="goRecord" data-item="{{item}}">📄 查看训练报告</button>
+      </view>
+
+      <!-- 情况3：待上课 (显示模拟完成) -->
+      <view wx:else class="action-box">
+         <!-- 为了演示方便，加这个按钮 -->
+         <button class="btn blue" bindtap="handleSimulate" data-id="{{item.id}}">⚡ 模拟上课完成</button>
+         <button class="btn grey" bindtap="handleCancel" data-id="{{item.id}}">取消</button>
+      </view>
+
+    </view>
+  </view>
+
+  <view wx:if="{{list.length === 0}}" class="empty">您还没有预约记录</view>
+</view>

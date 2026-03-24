@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fitness.mapper.CoursesMapper">
+    
+    <resultMap type="Courses" id="CoursesResult">
+        <result property="id"    column="id"    />
+        <result property="title"    column="title"    />
+        <result property="description"    column="description"    />
+        <result property="type"    column="type"    />
+        <result property="price"    column="price"    />
+        <result property="capacity"    column="capacity"    />
+        <result property="startTime"    column="start_time"    />
+        <result property="coachId"    column="coach_id"    />
+        <result property="duration"    column="duration"    />
+        <result property="image"    column="image"    />
+    </resultMap>
+
+    <sql id="selectCoursesVo">
+        select id, title, description, type, price, capacity, start_time, coach_id, duration, image from courses
+    </sql>
+
+    <select id="selectCoursesList" parameterType="Courses" resultMap="CoursesResult">
+        <include refid="selectCoursesVo"/>
+        <where>  
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="description != null  and description != ''"> and description = #{description}</if>
+            <if test="type != null  and type != ''"> and type = #{type}</if>
+            <if test="price != null "> and price = #{price}</if>
+            <if test="capacity != null "> and capacity = #{capacity}</if>
+            <if test="startTime != null "> and start_time = #{startTime}</if>
+            <if test="coachId != null "> and coach_id = #{coachId}</if>
+            <if test="duration != null "> and duration = #{duration}</if>
+            <if test="image != null  and image != ''"> and image = #{image}</if>
+        </where>
+    </select>
+    
+    <select id="selectCoursesById" parameterType="Long" resultMap="CoursesResult">
+        <include refid="selectCoursesVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertCourses" parameterType="Courses" useGeneratedKeys="true" keyProperty="id">
+        insert into courses
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="title != null and title != ''">title,</if>
+            <if test="description != null">description,</if>
+            <if test="type != null">type,</if>
+            <if test="price != null">price,</if>
+            <if test="capacity != null">capacity,</if>
+            <if test="startTime != null">start_time,</if>
+            <if test="coachId != null">coach_id,</if>
+            <if test="duration != null">duration,</if>
+            <if test="image != null">image,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="title != null and title != ''">#{title},</if>
+            <if test="description != null">#{description},</if>
+            <if test="type != null">#{type},</if>
+            <if test="price != null">#{price},</if>
+            <if test="capacity != null">#{capacity},</if>
+            <if test="startTime != null">#{startTime},</if>
+            <if test="coachId != null">#{coachId},</if>
+            <if test="duration != null">#{duration},</if>
+            <if test="image != null">#{image},</if>
+         </trim>
+    </insert>
+
+    <update id="updateCourses" parameterType="Courses">
+        update courses
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="title != null and title != ''">title = #{title},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="capacity != null">capacity = #{capacity},</if>
+            <if test="startTime != null">start_time = #{startTime},</if>
+            <if test="coachId != null">coach_id = #{coachId},</if>
+            <if test="duration != null">duration = #{duration},</if>
+            <if test="image != null">image = #{image},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteCoursesById" parameterType="Long">
+        delete from courses where id = #{id}
+    </delete>
+
+    <delete id="deleteCoursesByIds" parameterType="String">
+        delete from courses where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

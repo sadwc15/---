@@ -1,0 +1,68 @@
+<view class="container">
+  <!-- 加载中状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 错误提示 -->
+  <view class="error" wx:elif="{{error}}">
+    <text>{{error}}</text>
+    <button class="retry-btn" bindtap="retryLoad">重试</button>
+  </view>
+
+  <!-- 课程卡片 -->
+  <view class="detail-card" wx:elif="{{sessionInfo}}">
+    <!-- 学员信息区域 -->
+    <view class="member-section">
+      <image class="member-avatar" 
+             src="{{sessionInfo.member.avatar || '/assets/images/default-avatar.png'}}" 
+             mode="aspectFill"></image>
+      <view class="member-info">
+        <text class="member-name">{{sessionInfo.member.name || '未知学员'}}</text>
+        <text class="member-label">学员</text>
+      </view>
+    </view>
+
+    <!-- 课程信息区域 -->
+    <view class="course-section">
+      <view class="info-row">
+        <text class="label">课程名称</text>
+        <text class="value">{{sessionInfo.course.title || '未命名课程'}}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">上课时间</text>
+        <text class="value">{{formatTime(sessionInfo.bookingTime)}}</text>
+      </view>
+      <view class="info-row">
+        <text class="label">当前状态</text>
+        <view class="status-tag status-{{sessionInfo.sessionStatus}}">
+          <text wx:if="{{sessionInfo.sessionStatus == 1}}">上课中</text>
+          <text wx:elif="{{sessionInfo.sessionStatus == 2}}">已完成</text>
+          <text wx:else>待开始</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部操作按钮 -->
+    <view class="action-section">
+      <!-- 上课中：显示下课按钮 -->
+      <button class="btn-finish" 
+              wx:if="{{sessionInfo.sessionStatus == 1}}"
+              bindtap="handleFinish"
+              loading="{{btnLoading}}"
+              disabled="{{btnLoading}}">
+        下课
+      </button>
+
+      <!-- 已完成：显示标签 -->
+      <view class="finished-tag" wx:elif="{{sessionInfo.sessionStatus == 2}}">
+        <text>✓ 课程已完成</text>
+      </view>
+
+      <!-- 待开始：显示提示 -->
+      <view class="pending-tip" wx:else>
+        <text>⏰ 课程待开始</text>
+      </view>
+    </view>
+  </view>
+</view>
